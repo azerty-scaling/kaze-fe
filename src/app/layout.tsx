@@ -10,12 +10,12 @@ import { Providers } from "./providers";
 const open_sans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "xxxxxxxxxxxx",
-  applicationName: "xxxxxxxxxxxx",
-  description: "xxxxxxxxxxxx",
+  title: "Kaze",
+  applicationName: "Kaze",
+  description: "Buy now pay later",
   authors: {
-    name: "Azerty Global",
-    url: "https://github.com/Azerty-Global/azerty_sc",
+    name: "Azerty Scaling",
+    url: "https://github.com/Azerty-Scaling",
   },
   icons: "favicon.ico",
   manifest: "site.webmanifest",

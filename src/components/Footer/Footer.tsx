@@ -12,26 +12,26 @@ const Footer: FC = () => {
     <Box as="footer" p={"1rem"} position="sticky" bottom={0} zIndex={10} textAlign={"center"}>
       <Flex w={"full"} justifyContent={"space-between"}>
         <Flex minW={"400px"}>
-          <Link href="https://github.com/Azerty-Global" target="_blank" rel="noopener noreferrer">
-            Azerty Global (c) 2024
+          <Link href="https://github.com/Azerty-Scaling" target="_blank" rel="noopener noreferrer">
+            Azerty Scaling (c) 2024
           </Link>
         </Flex>
         <BlockNumber />
         <Flex gap={4} alignItems={"baseline"} minH={6}>
           <Flex gap={2}>
             <Text>Frontend: </Text>
-            <Link href={"https://github.com/azerty-global/kaze_fe"}>
+            <Link href={"https://github.com/azerty-scaling/kaze_fe"}>
               <FaGithub alignmentBaseline={"before-edge"} size={24} />
             </Link>
           </Flex>
           <Flex gap={2}>
             <Text fontSize={"sm"}>Smart Contracts: </Text>
-            <Link href={"https://github.com/azerty-global/kaze_sc"}>
+            <Link href={"https://github.com/azerty-scaling/kaze_sc"}>
               <FaGithub alignmentBaseline={"before-edge"} size={24} />
             </Link>
           </Flex>
 
-          <Link href={"https://github.com/azerty-global/kaze_sc"}>
+          <Link href={"https://github.com/azerty-scaling/kaze_sc"}>
             <Text
               textStyle={{
                 textDecoration: "underline",
