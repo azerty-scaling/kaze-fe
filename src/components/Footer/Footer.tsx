@@ -19,15 +19,15 @@ const Footer: FC = () => {
         <BlockNumber />
         <Flex gap={4} alignItems={"baseline"} minH={6}>
           <Flex gap={2}>
-            <Text>Frontend: </Text>
+            <Text fontSize={"xs"}>Frontend: </Text>
             <Link href={"https://github.com/azerty-scaling/kaze_fe"}>
-              <FaGithub alignmentBaseline={"before-edge"} size={24} />
+              <FaGithub alignmentBaseline={"before-edge"} size={18} />
             </Link>
           </Flex>
           <Flex gap={2}>
-            <Text fontSize={"sm"}>Smart Contracts: </Text>
+            <Text fontSize={"xs"}>Smart Contracts: </Text>
             <Link href={"https://github.com/azerty-scaling/kaze_sc"}>
-              <FaGithub alignmentBaseline={"before-edge"} size={24} />
+              <FaGithub alignmentBaseline={"before-edge"} size={18} />
             </Link>
           </Flex>
 
@@ -37,7 +37,7 @@ const Footer: FC = () => {
                 textDecoration: "underline",
               }}
               textUnderlineOffset={2}
-              fontSize={"sm"}
+              fontSize={"xs"}
             >
               Smart contracts are not audited.
             </Text>
@@ -46,7 +46,7 @@ const Footer: FC = () => {
                 textDecoration: "underline",
               }}
               textUnderlineOffset={2}
-              fontSize={"sm"}
+              fontSize={"xs"}
             >
               Use at your own risk.
             </Text>

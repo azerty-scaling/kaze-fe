@@ -1,10 +1,9 @@
 "use client";
 import { type FC } from "react";
 
-import { HStack, Heading, useColorMode } from "@chakra-ui/react";
+import { HStack, Heading, Button } from "@chakra-ui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
-import Link from "next/link";
 
 import { useWindowSize } from "@/hooks/useWindowSize";
 
@@ -13,7 +12,6 @@ import { DarkModeButton } from "../DarkModeButton";
 
 const Header: FC = () => {
   const { isTablet } = useWindowSize();
-  const { colorMode } = useColorMode();
 
   return (
     <HStack
@@ -23,49 +21,47 @@ const Header: FC = () => {
       top={0}
       zIndex={10}
       justifyContent={"space-between"}
+      borderBottom={"1px solid #F4A896"}
     >
-      <HStack
-        onClick={() => {
-          window.open("/", "_self");
-        }}
-        cursor={"pointer"}
-      >
-        <Image src={logo.src} alt="logo" width={45} height={45} />
-        {!isTablet && (
-          <Heading as="h1" fontSize={"1.5rem"} className="text-shadow">
-            Kaze
-          </Heading>
-        )}
+      <HStack alignItems={"flex-end"}>
+        <HStack
+          onClick={() => {
+            window.open("/", "_self");
+          }}
+          cursor={"pointer"}
+        >
+          <Image src={logo.src} alt="logo" width={45} height={45} />
+          {!isTablet && (
+            <Heading as="h1" fontSize={"1.5rem"} className="text-shadow">
+              Kaze
+            </Heading>
+          )}
+        </HStack>
+        <HStack pl={2}>
+          {!isTablet && (
+            <Button
+              fontSize={"1rem"}
+              colorScheme={"teal"}
+              variant={"ghost"}
+              onClick={() => window.open("/register", "_self")}
+            >
+              Opt-In
+            </Button>
+          )}
+          {!isTablet && (
+            <Button
+              fontSize={"1rem"}
+              colorScheme={"teal"}
+              variant={"ghost"}
+              onClick={() => window.open("/earn", "_self")}
+            >
+              Earn
+            </Button>
+          )}
+        </HStack>
       </HStack>
 
       <HStack>
-        {!isTablet && (
-          <Link
-            style={{
-              textDecoration: "underline",
-              paddingRight: "20px",
-            }}
-            href={"/register"}
-          >
-            <Heading as={"h2"} fontSize={"1rem"}>
-              Register
-            </Heading>
-          </Link>
-        )}
-        {!isTablet && (
-          <Link
-            style={{
-              textDecoration: "underline",
-              paddingRight: "20px",
-              color: `${colorMode === "light" ? "#250" : "white"}`,
-            }}
-            href={"/positions"}
-          >
-            <Heading as={"h2"} fontSize={"1rem"}>
-              Your Positions
-            </Heading>
-          </Link>
-        )}
         <ConnectButton />
         <DarkModeButton />
       </HStack>
