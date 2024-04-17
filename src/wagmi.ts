@@ -92,7 +92,7 @@ const transports: Record<number, Transport> = {
 };
 export const wagmiConfig = createConfig({
   chains: [
-    mainnet,
+    // mainnet,
     // sepolia,
     // polygon,
     // polygonMumbai,
