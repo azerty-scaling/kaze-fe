@@ -37,7 +37,7 @@ const RegisterPane: FC = () => {
 
       <Flex className={styles.content}>
         {isConnected ? (
-          connector?.id == "io.metamask" ? (
+          connector?.id == "safe" ? (
             <RegisterFlow />
           ) : (
             <NotSafe />
