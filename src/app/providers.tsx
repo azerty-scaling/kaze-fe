@@ -25,7 +25,7 @@ export function Providers({ children }: { children: ReactNode }) {
   };
   const myTheme = merge(darkTheme(), {
     colors: {
-      accentColor: "#250",
+      accentColor: "#358597",
     },
   } as Theme);
 

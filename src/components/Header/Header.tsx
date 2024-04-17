@@ -44,12 +44,11 @@ const Header: FC = () => {
             style={{
               textDecoration: "underline",
               paddingRight: "20px",
-              color: `${colorMode === "light" ? "#250" : "white"}`,
             }}
-            href={"/demo"}
+            href={"/register"}
           >
             <Heading as={"h2"} fontSize={"1rem"}>
-              Demo
+              Register
             </Heading>
           </Link>
         )}
