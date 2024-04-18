@@ -20,18 +20,18 @@ const Footer: FC = () => {
         <Flex gap={4} alignItems={"baseline"} minH={6}>
           <Flex gap={2}>
             <Text fontSize={"xs"}>Frontend: </Text>
-            <Link href={"https://github.com/azerty-scaling/kaze_fe"}>
+            <Link href={"https://github.com/azerty-scaling/keza_fe"}>
               <FaGithub alignmentBaseline={"before-edge"} size={18} />
             </Link>
           </Flex>
           <Flex gap={2}>
             <Text fontSize={"xs"}>Smart Contracts: </Text>
-            <Link href={"https://github.com/azerty-scaling/kaze_sc"}>
+            <Link href={"https://github.com/azerty-scaling/keza_sc"}>
               <FaGithub alignmentBaseline={"before-edge"} size={18} />
             </Link>
           </Flex>
 
-          <Link href={"https://github.com/azerty-scaling/kaze_sc"}>
+          <Link href={"https://github.com/azerty-scaling/keza_sc"}>
             <Text
               textStyle={{
                 textDecoration: "underline",

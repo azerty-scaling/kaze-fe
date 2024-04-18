@@ -58,7 +58,7 @@ const connectors = connectorsForWallets(
       ],
     },
   ],
-  { appName: "kaze", projectId: walletConnectProjectId },
+  { appName: "keza", projectId: walletConnectProjectId },
 );
 
 // Fix missing icons

@@ -14,8 +14,7 @@ const NotSafe: FC = () => {
 const RegisterFlow: FC = () => {
   return (
     <Box>
-      <Text>Thanks for choosing Kaze</Text>
-      <Text>Registering with Kaze is easy. </Text>
+      <Text>Thanks for choosing Keza</Text>
       <RegistrationStepper variant={"simple"} />
     </Box>
   );
