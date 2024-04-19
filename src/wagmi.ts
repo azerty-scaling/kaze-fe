@@ -27,6 +27,7 @@ import {
   // bsc,
   // bscTestnet,
   gnosis,
+  arbitrum,
 } from "wagmi/chains";
 // import { SafeConnector } from 'wagmi/connectora';
 
@@ -92,13 +93,13 @@ const transports: Record<number, Transport> = {
 };
 export const wagmiConfig = createConfig({
   chains: [
-    // mainnet,
+    mainnet,
     // sepolia,
     // polygon,
     // polygonMumbai,
     // optimism,
     // optimismGoerli,
-    // arbitrum,
+    arbitrum,
     // arbitrumGoerli,
     // customLinea,
     // customLineaTestnet,
