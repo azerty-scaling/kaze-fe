@@ -44,7 +44,7 @@ const MainPane: FC = () => {
               py={8}
               colorScheme={"teal"}
               onClick={() => {
-                window.open("/deposit", "_self");
+                window.open("/register", "_self");
               }}
               // onClick={handleSignMessage}
               // isLoading={isPending}
@@ -73,7 +73,7 @@ const MainPane: FC = () => {
               py={8}
               colorScheme={"teal"}
               onClick={() => {
-                window.open("/deposit", "_self");
+                window.open("/aarn", "_self");
               }}
               // onClick={handleSignMessage}
               // isLoading={isPending}

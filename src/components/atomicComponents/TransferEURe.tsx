@@ -22,7 +22,7 @@ const TransferEURe: FC = () => {
   // const { data, error, isPending, isError, sendTransaction } = useSendTransaction();
   // const { data: receipt, isLoading } = useWaitForTransactionReceipt({ hash: data });
   const { address } = useAccount();
-  const eure_vault_address = addresses["EURE_VAULT"];
+  const eure_lending_pool = addresses["LendingPool"];
   const eure_address = addresses["MONERIUM_EURO"];
   const { data, error, isPending, isError, writeContract } = useWriteContract();
   const { data: receipt, isLoading } = useWaitForTransactionReceipt({ hash: data });
@@ -82,7 +82,7 @@ const TransferEURe: FC = () => {
       abi: erc20Abi,
       address: addresses["MONERIUM_EURO"] as `0x${string}`,
       functionName: "allowance",
-      args: [address as `0x${string}`, eure_vault_address as `0x${string}`],
+      args: [address as `0x${string}`, eure_lending_pool as `0x${string}`],
     }).then((result) => {
       const parsed = parseFloat(formatUnits(result, 18));
       if (parsed) {
@@ -117,7 +117,7 @@ const TransferEURe: FC = () => {
 
     writeContract({
       abi: erc4626Abi,
-      address: eure_vault_address as `0x${string}`,
+      address: eure_lending_pool as `0x${string}`,
       functionName: "deposit",
       args: [parseEther(amount), address as `0x${string}`],
     });
@@ -142,7 +142,7 @@ const TransferEURe: FC = () => {
       abi: erc20Abi,
       address: eure_address as `0x${string}`,
       functionName: "approve",
-      args: [eure_vault_address as `0x${string}`, parseEther(amount)],
+      args: [eure_lending_pool as `0x${string}`, parseEther(amount)],
     });
   };
 
