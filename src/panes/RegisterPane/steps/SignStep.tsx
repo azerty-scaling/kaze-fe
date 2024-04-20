@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
-import { OffChainSignType, SignProtocolClient, SpMode } from "@ethsign/sp-sdk";
+import { EvmChains, SignProtocolClient, SpMode } from "@ethsign/sp-sdk";
 import Image from "next/image";
 import Link from "next/link";
 import { useAccount } from "wagmi";
@@ -21,19 +21,27 @@ export const SignStep = (props: { service: any; spendLimit: any; goToPrevious: a
     style: "currency",
     currency: "EUR",
   }).format(props.spendLimit * 10);
-  const client = new SignProtocolClient(SpMode.OffChain, {
-    signType: OffChainSignType.EvmEip712,
+  const client = new SignProtocolClient(SpMode.OnChain, {
+    chain: EvmChains.gnosis,
     // account: privateKeyToAccount(privateKey), // optional
   });
 
   const handleSign = () => {
+    let uintService = 1;
+    if (props.service == "gnosis") {
+      uintService = 1;
+    } else {
+      uintService = 2;
+    }
+    console.log("service", uintService);
     client
       .createAttestation({
-        schemaId: "SPS_UjQklwQn47JShOSzIlxHk",
+        schemaId: "0x5",
         data: {
-          signerAddress: address,
-          service: props.service,
-          limit: props.spendLimit,
+          service: uintService,
+          spendLimit: props.spendLimit * 100,
+          originalSafe: address,
+          connectedSafe: address,
         },
         indexingValue: address as string,
       })

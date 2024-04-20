@@ -1,0 +1,293 @@
+diff --git a/node_modules/@ethsign/sp-sdk/dist/clients/evm/constants.d.ts b/node_modules/@ethsign/sp-sdk/dist/clients/evm/constants.d.ts
+index 900f7ee..ce7fb29 100644
+--- a/node_modules/@ethsign/sp-sdk/dist/clients/evm/constants.d.ts
++++ b/node_modules/@ethsign/sp-sdk/dist/clients/evm/constants.d.ts
+@@ -3701,6 +3701,43 @@ export declare const ContractInfoMap: {
+             fees?: import("viem").ChainFees<undefined> | undefined;
+         };
+     };
++    gnosis: {
++        address: `0x${string}`;
++        chain: {
++            blockExplorers: {
++                readonly default: {
++                    readonly name: "GnosisScan";
++                    readonly url: "https://gnosisscan.io";
++                    readonly apiUrl: "https://gnosisscan.io/api";
++                };
++            };
++            contracts: {
++                readonly multicall3: {
++                    readonly address: "0xcA11bde05977b3631167028862bE2a173976CA11";
++                    readonly blockCreated: 4967313;
++                };
++            };
++            id: 100;
++            name: "Gnosis";
++            nativeCurrency: {
++                readonly decimals: 18;
++                readonly name: "Gnosis";
++                readonly symbol: "xDAI";
++            };
++            rpcUrls: {
++                readonly default: {
++                    readonly http: readonly ["https://rpc.gnosischain.com/"];
++                    readonly webSocket: readonly ["wss://rpc.gnosischain.com/wss"];
++                };
++            };
++            sourceId?: number | undefined;
++            testnet: false;
++            custom?: Record<string, unknown> | undefined;
++            formatters?: undefined;
++            serializers?: import("viem").ChainSerializers<undefined> | undefined;
++            fees?: import("viem").ChainFees<undefined> | undefined;
++        };
++    };
+     gnosisChiado: {
+         address: `0x${string}`;
+         chain: {
+diff --git a/node_modules/@ethsign/sp-sdk/dist/clients/evm/types.d.ts b/node_modules/@ethsign/sp-sdk/dist/clients/evm/types.d.ts
+index 6d10027..5f5bbac 100644
+--- a/node_modules/@ethsign/sp-sdk/dist/clients/evm/types.d.ts
++++ b/node_modules/@ethsign/sp-sdk/dist/clients/evm/types.d.ts
+@@ -15,6 +15,7 @@ export declare enum EvmChains {
+     polygonAmoy = "polygonAmoy",
+     optimism = "optimism",
+     gnosisChiado = "gnosisChiado",
++    gnosis = "gnosis",
+     optimismSepolia = "optimismSepolia",
+     arbitrumSepolia = "arbitrumSepolia",
+     polygonMumbai = "polygonMumbai"
+diff --git a/node_modules/@ethsign/sp-sdk/dist/index.cjs b/node_modules/@ethsign/sp-sdk/dist/index.cjs
+index 7333425..06dad11 100644
+--- a/node_modules/@ethsign/sp-sdk/dist/index.cjs
++++ b/node_modules/@ethsign/sp-sdk/dist/index.cjs
+@@ -12766,6 +12766,36 @@ const gnosisChiado = /*#__PURE__*/ defineChain({
+     testnet: true,
+ });
+ 
++const gnosis = /*#__PURE__*/ defineChain({
++    id: 100,
++    name: 'Gnosis',
++    nativeCurrency: {
++        decimals: 18,
++        name: 'Gnosis',
++        symbol: 'xDAI',
++    },
++    rpcUrls: {
++        default: {
++            http: ['https://rpc.gnosischain.com'],
++            webSocket: ['wss://rpc.gnosischain.com/wss'],
++        },
++    },
++    blockExplorers: {
++        default: {
++            name: 'Blockscout',
++            url: 'https://gnosisscan.io',
++            apiUrl: 'https://gnosisscan.io/api',
++        },
++    },
++    contracts: {
++        multicall3: {
++            address: '0xcA11bde05977b3631167028862bE2a173976CA11',
++            blockCreated: 4967313,
++        },
++    },
++    testnet: false,
++});
++
+ const mainnet = /*#__PURE__*/ defineChain({
+     id: 1,
+     name: 'Ethereum',
+@@ -13252,6 +13282,7 @@ exports.EvmChains = void 0;
+     EvmChains["sepolia"] = "sepolia";
+     EvmChains["polygonAmoy"] = "polygonAmoy";
+     EvmChains["optimism"] = "optimism";
++    EvmChains["gnosis"] = "gnosis";
+     EvmChains["gnosisChiado"] = "gnosisChiado";
+     EvmChains["optimismSepolia"] = "optimismSepolia";
+     EvmChains["arbitrumSepolia"] = "arbitrumSepolia";
+@@ -13319,6 +13350,10 @@ const ContractInfoMap = {
+         address: '0x945C44803E92a3495C32be951052a62E45A5D964',
+         chain: optimism,
+     },
++    [exports.EvmChains.gnosis]: {
++        address: '0x4e4af2a21ebf62850fD99Eb6253E1eFBb56098cD',
++        chain: gnosis,
++    },
+     [exports.EvmChains.gnosisChiado]: {
+         address: '0x4e4af2a21ebf62850fD99Eb6253E1eFBb56098cD',
+         chain: gnosisChiado,
+@@ -13412,6 +13447,15 @@ const chainInfo = {
+             chainInfo: gnosisChiado,
+             isTestnet: true,
+         },
++        {
++            name: gnosis.name,
++            chain: exports.EvmChains.gnosis,
++            icon: 'https://ethsign-public.s3.ap-east-1.amazonaws.com/attestation/gnosischian_240417092122.webp',
++            scanUrl: gnosis.blockExplorers.default.url + '/tx/',
++            id: gnosis.id + '',
++            chainInfo: gnosis,
++            isTestnet: false,
++        },
+         {
+             name: zetachainAthensTestnet.name,
+             chain: exports.EvmChains.zetachainAthensTestnet,
+diff --git a/node_modules/@ethsign/sp-sdk/dist/index.esm.js b/node_modules/@ethsign/sp-sdk/dist/index.esm.js
+index a2acdaf..2d4dc19 100644
+--- a/node_modules/@ethsign/sp-sdk/dist/index.esm.js
++++ b/node_modules/@ethsign/sp-sdk/dist/index.esm.js
+@@ -12764,6 +12764,36 @@ const gnosisChiado = /*#__PURE__*/ defineChain({
+     testnet: true,
+ });
+ 
++const gnosis = /*#__PURE__*/ defineChain({
++    id: 100,
++    name: 'Gnosis',
++    nativeCurrency: {
++        decimals: 18,
++        name: 'Gnosis',
++        symbol: 'xDAI',
++    },
++    rpcUrls: {
++        default: {
++            http: ['https://rpc.gnosischain.com'],
++            webSocket: ['wss://rpc.gnosischain.com/wss'],
++        },
++    },
++    blockExplorers: {
++        default: {
++            name: 'Blockscout',
++            url: 'https://gnosisscan.io',
++            apiUrl: 'https://gnosisscan.io/api',
++        },
++    },
++    contracts: {
++        multicall3: {
++            address: '0xcA11bde05977b3631167028862bE2a173976CA11',
++            blockCreated: 4967313,
++        },
++    },
++    testnet: false,
++});
++
+ const mainnet = /*#__PURE__*/ defineChain({
+     id: 1,
+     name: 'Ethereum',
+@@ -13250,6 +13280,7 @@ var EvmChains;
+     EvmChains["sepolia"] = "sepolia";
+     EvmChains["polygonAmoy"] = "polygonAmoy";
+     EvmChains["optimism"] = "optimism";
++    EvmChains["gnosis"] = "gnosis";
+     EvmChains["gnosisChiado"] = "gnosisChiado";
+     EvmChains["optimismSepolia"] = "optimismSepolia";
+     EvmChains["arbitrumSepolia"] = "arbitrumSepolia";
+@@ -13317,6 +13348,10 @@ const ContractInfoMap = {
+         address: '0x945C44803E92a3495C32be951052a62E45A5D964',
+         chain: optimism,
+     },
++    [EvmChains.gnosis]: {
++        address: '0x4e4af2a21ebf62850fD99Eb6253E1eFBb56098cD',
++        chain: gnosis,
++    },
+     [EvmChains.gnosisChiado]: {
+         address: '0x4e4af2a21ebf62850fD99Eb6253E1eFBb56098cD',
+         chain: gnosisChiado,
+@@ -13401,6 +13436,15 @@ const chainInfo = {
+             chainInfo: polygonAmoy,
+             isTestnet: true,
+         },
++        {
++            name: gnosis.name,
++            chain: EvmChains.gnosis,
++            icon: 'https://ethsign-public.s3.ap-east-1.amazonaws.com/attestation/gnosischian_240417092122.webp',
++            scanUrl: gnosis.blockExplorers.default.url + '/tx/',
++            id: gnosis.id + '',
++            chainInfo: gnosis,
++            isTestnet: true,
++        },
+         {
+             name: gnosisChiado.name,
+             chain: EvmChains.gnosisChiado,
+diff --git a/node_modules/@ethsign/sp-sdk/src/clients/evm/OnChain/index.ts b/node_modules/@ethsign/sp-sdk/src/clients/evm/OnChain/index.ts
+index ac9c92e..0681899 100644
+--- a/node_modules/@ethsign/sp-sdk/src/clients/evm/OnChain/index.ts
++++ b/node_modules/@ethsign/sp-sdk/src/clients/evm/OnChain/index.ts
+@@ -51,7 +51,7 @@ export class OnChainClient implements SignProtocolClientBase {
+   }: OnChainClientOptions) {
+     this.contractInfo = chainType
+       ? ContractInfoMap[chainType]
+-      : ContractInfoMap[EvmChains.sepolia];
++      : ContractInfoMap[EvmChains.base];
+     const chain = {
+       ...this.contractInfo?.chain,
+       rpcUrls: rpc
+@@ -62,6 +62,7 @@ export class OnChainClient implements SignProtocolClientBase {
+           }
+         : this.contractInfo?.chain.rpcUrls,
+     };
++    console.log('chain', chain)
+     this.chain = chain;
+     // @ts-ignore
+     this.publicClient = createPublicClient({
+@@ -89,6 +90,8 @@ export class OnChainClient implements SignProtocolClientBase {
+     });
+   }
+   public async swithChain() {
++    console.log('this.chain.id', this.chain.id);
++    console.log('here')
+     const walletChainId = await this.walletClient.getChainId();
+     if (walletChainId !== this.chain.id) {
+       try {
+diff --git a/node_modules/@ethsign/sp-sdk/src/clients/evm/constants.ts b/node_modules/@ethsign/sp-sdk/src/clients/evm/constants.ts
+index b6bbc4f..3a4309a 100644
+--- a/node_modules/@ethsign/sp-sdk/src/clients/evm/constants.ts
++++ b/node_modules/@ethsign/sp-sdk/src/clients/evm/constants.ts
+@@ -18,6 +18,7 @@ import {
+   optimismSepolia,
+   arbitrumSepolia,
+   polygonMumbai,
++  gnosis,
+ } from 'viem/chains';
+ import { EvmChains } from './types';
+ import { Address } from 'viem';
+@@ -88,6 +89,10 @@ export const ContractInfoMap = {
+     address: '0x4e4af2a21ebf62850fD99Eb6253E1eFBb56098cD' as Address,
+     chain: gnosisChiado,
+   },
++  [EvmChains.gnosis]: {
++    address: '0x4e4af2a21ebf62850fD99Eb6253E1eFBb56098cD' as Address,
++    chain: gnosis,
++  },
+   [EvmChains.optimismSepolia]: {
+     address: '0x4e4af2a21ebf62850fD99Eb6253E1eFBb56098cD' as Address,
+     chain: optimismSepolia,
+@@ -196,6 +201,15 @@ export const chainInfo: {
+       chainInfo: gnosisChiado,
+       isTestnet: true,
+     },
++    {
++      name: gnosis.name,
++      chain: EvmChains.gnosis,
++      icon: 'https://ethsign-public.s3.ap-east-1.amazonaws.com/attestation/gnosischian_240417092122.webp',
++      scanUrl: gnosis.blockExplorers.default.url + '/tx/',
++      id: gnosis.id + '',
++      chainInfo: gnosis,
++      isTestnet: false,
++    },
+     {
+       name: zetachainAthensTestnet.name,
+       chain: EvmChains.zetachainAthensTestnet,
+diff --git a/node_modules/@ethsign/sp-sdk/src/clients/evm/types.ts b/node_modules/@ethsign/sp-sdk/src/clients/evm/types.ts
+index bb4294d..3ac3efa 100644
+--- a/node_modules/@ethsign/sp-sdk/src/clients/evm/types.ts
++++ b/node_modules/@ethsign/sp-sdk/src/clients/evm/types.ts
+@@ -15,6 +15,7 @@ export enum EvmChains {
+   polygonAmoy = 'polygonAmoy',
+   optimism = 'optimism',
+   gnosisChiado = 'gnosisChiado',
++  gnosis = 'gnosis',
+   optimismSepolia = 'optimismSepolia',
+   arbitrumSepolia = 'arbitrumSepolia',
+   polygonMumbai = 'polygonMumbai',
