@@ -2,7 +2,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 
 import { Footer, Header } from "@/components";
-import { DepositPane } from "@/panes";
+import { EarnPane } from "@/panes";
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
       <Header />
 
       <Box as="main" flex={1} p={4}>
-        <DepositPane />
+        <EarnPane />
       </Box>
 
       <Footer />

@@ -73,7 +73,7 @@ const MainPane: FC = () => {
               py={8}
               colorScheme={"teal"}
               onClick={() => {
-                window.open("/aarn", "_self");
+                window.open("/earn", "_self");
               }}
               // onClick={handleSignMessage}
               // isLoading={isPending}
