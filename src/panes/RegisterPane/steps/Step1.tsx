@@ -1,3 +1,4 @@
+"use client";
 import { Box, Heading } from "@chakra-ui/layout";
 import { RadioGroup, Stack, Text, useRadioGroup } from "@chakra-ui/react";
 import { useController, useFormContext } from "react-hook-form";
@@ -12,8 +13,8 @@ export const Step1Schema = yup.object().shape({
 });
 
 const options = [
-  { label: "Use stETH on Gnosis as Security", value: "gnosis", icon: GiOwl },
-  { label: "Use stETH on Arbitrum as Security", value: "arbitrum", icon: GiCrossedChains },
+  { label: "Use stETH on Gnosis as Collateral", value: "gnosis", icon: GiOwl },
+  { label: "Use stETH on Arbitrum as Collateral", value: "arbitrum", icon: GiCrossedChains },
 ];
 
 export const Step1 = () => {

@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 import { Button, Flex, Heading, Text } from "@chakra-ui/react";
@@ -8,7 +9,12 @@ import { useAccount } from "wagmi";
 
 import logo from "../../../../public/img/eth_sign_logo.png";
 
-export const SignStep = (props: { service: any; spendLimit: any; goToPrevious: any }) => {
+export const SignStep = (props: {
+  service: any;
+  spendLimit: any;
+  goToPrevious: any;
+  connectedSafe: any;
+}) => {
   const { address } = useAccount();
   const [attestationID, setAttestationID] = useState("");
   // useEffect(() => {
@@ -33,15 +39,15 @@ export const SignStep = (props: { service: any; spendLimit: any; goToPrevious: a
     } else {
       uintService = 2;
     }
-    console.log("service", uintService);
+    // console.log("service", uintService);
     client
       .createAttestation({
-        schemaId: "0x5",
+        schemaId: "0x9",
         data: {
           service: uintService,
-          spendLimit: props.spendLimit * 100,
+          spendLimit: props.spendLimit * 10 * 1e18,
           originalSafe: address,
-          connectedSafe: address,
+          connectedSafe: props.connectedSafe,
         },
         indexingValue: address as string,
       })
@@ -77,6 +83,12 @@ export const SignStep = (props: { service: any; spendLimit: any; goToPrevious: a
           {amount}
         </Text>{" "}
         spend limit
+      </Text>
+      <Text>
+        Connected Safe:
+        <Text as={"b"} textTransform={"capitalize"}>
+          {props.connectedSafe}
+        </Text>
       </Text>
       <br />
       <Image src={logo.src} alt="eth sign logo" width={45} height={45} />

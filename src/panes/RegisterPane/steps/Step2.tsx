@@ -1,3 +1,4 @@
+"use client";
 import { Box, Heading } from "@chakra-ui/layout";
 import { Flex, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text } from "@chakra-ui/react";
 import { useController, useFormContext } from "react-hook-form";

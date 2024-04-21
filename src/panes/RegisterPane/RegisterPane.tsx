@@ -1,4 +1,4 @@
-// components/MainPane.tsx
+"use client";
 import { type FC } from "react";
 
 import { Box, Flex, Heading, Text, useColorMode } from "@chakra-ui/react";
@@ -36,7 +36,7 @@ const RegisterPane: FC = () => {
 
       <Flex className={styles.content}>
         {isConnected ? (
-          connector?.id == "safe" ? (
+          connector?.id == "io.metamask" ? (
             <RegisterFlow />
           ) : (
             <NotSafe />

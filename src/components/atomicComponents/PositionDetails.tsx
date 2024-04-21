@@ -12,7 +12,7 @@ import { wagmiConfig } from "@/wagmi";
 const PositionDetails: FC = () => {
   const { isConnected } = useAccount();
   const { address } = useAccount();
-  const eure_vault_address = addresses["EURE_VAULT"];
+  const lending_pool_address = addresses["LendingPool"];
   const eure_address = addresses["MONERIUM_EURO"];
   const [shares, setShares] = useState<string>("0");
   const [assets, setAssets] = useState<string>("0");
@@ -34,7 +34,7 @@ const PositionDetails: FC = () => {
           functionName: "decimals",
         },
         {
-          address: eure_vault_address as `0x${string}`,
+          address: lending_pool_address as `0x${string}`,
           abi: erc4626Abi,
           functionName: "balanceOf",
           args: [address as `0x${string}`],
@@ -52,7 +52,7 @@ const PositionDetails: FC = () => {
           readContracts(wagmiConfig, {
             contracts: [
               {
-                address: eure_vault_address as `0x${string}`,
+                address: lending_pool_address as `0x${string}`,
                 abi: erc4626Abi,
                 functionName: "convertToAssets",
                 args: [shares],

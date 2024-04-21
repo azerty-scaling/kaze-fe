@@ -1,4 +1,5 @@
 // components/MainPane.tsx
+"use client";
 import { type FC, useState } from "react";
 
 import { Box, Button, Flex, Heading, useColorMode, Text } from "@chakra-ui/react";
@@ -18,7 +19,7 @@ const AdminPane: FC = () => {
     client
       .createSchema({
         name: "NextPay Service Agreement",
-        resolver: "0xEdc4fF459aC4eF05Be2E97629617A1cD4a799dEA",
+        resolver: "0x2041E8CE28B0F6F543Df01c0F7d8e5BA1C0764cc",
         data: [
           {
             name: "service",

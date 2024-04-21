@@ -16,7 +16,7 @@ const MainPane: FC = () => {
       border={colorMode === "light" ? "none" : "1px solid rgba(152, 161, 192, 0.24)"}
     >
       <Heading as="h2" fontSize={"2rem"} mb={10} className="text-shadow">
-        Keza
+        NextPay
       </Heading>
 
       <Box px={12}></Box>
@@ -24,8 +24,8 @@ const MainPane: FC = () => {
       <Flex className={styles.content}>
         {/*<Status />*/}
         <Text>
-          Keza is a decentralized market where it brings Gnosis Pay users who wants to buy now and
-          pay later and EURe holders who wants to earn interest on their deposits.
+          NextPay is a decentralized market where it brings Gnosis Pay users who wants to buy now
+          and pay later and EURe holders who wants to earn interest on their deposits.
         </Text>
         <br />
         <HStack gap={8}>

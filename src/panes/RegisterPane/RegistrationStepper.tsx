@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Button,
@@ -18,13 +19,14 @@ import { FormProvider, useForm } from "react-hook-form";
 import { SignStep } from "./steps/SignStep";
 import { Step1, Step1Schema } from "./steps/Step1";
 import { Step2, Step2Schema } from "./steps/Step2";
-// import { Step3, Step3Schema } from "./Step3";
+import { Step3, Step3Schema } from "./steps/Step3";
 // import { Step4, Step4Schema } from "./Step4";
 
 const steps = [
   { label: "Step 1", description: "Select Service", content: <Step1 /> },
   { label: "Step 2", description: "Spend Limit", content: <Step2 /> },
-  { label: "Step 3", description: "Overview", content: <></> },
+  { label: "Step 3", description: "Connected safe", content: <Step3 /> },
+  { label: "Step 4", description: "Overview", content: <></> },
   // { label: "Step 3", description: "Sign", content: <SignStep /> },
   // { label: "Step 4", description: "Goal", content: <Step4 /> },
 ];
@@ -33,12 +35,13 @@ const INITIAL_VALUES = {
   service: "",
   spendLimit: 0,
   goal: "",
+  connectedSafe: "",
   signed: false,
 };
 
 export type FormValues = typeof INITIAL_VALUES;
 
-const schemaArr = [Step1Schema, Step2Schema];
+const schemaArr = [Step1Schema, Step2Schema, Step3Schema];
 
 export const ErrorMessage = ({ message }: { message: string }) => {
   return (
@@ -108,6 +111,7 @@ export const RegistrationStepper = ({
           service={methods.getValues("service")}
           spendLimit={methods.getValues("spendLimit")}
           goToPrevious={goToPrevious}
+          connectedSafe={methods.getValues("connectedSafe")}
         />
       ) : (
         <Flex width="100%" justify="center">
