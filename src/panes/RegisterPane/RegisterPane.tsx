@@ -1,4 +1,3 @@
-"use client";
 import { type FC } from "react";
 
 import { Box, Flex, Heading, Text, useColorMode } from "@chakra-ui/react";

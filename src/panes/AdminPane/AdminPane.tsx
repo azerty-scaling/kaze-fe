@@ -1,5 +1,4 @@
 // components/MainPane.tsx
-"use client";
 import { type FC, useState } from "react";
 
 import { Box, Button, Flex, Heading, useColorMode, Text } from "@chakra-ui/react";

@@ -1,4 +1,3 @@
-"use client";
 import { Box, Heading } from "@chakra-ui/layout";
 import { RadioGroup, Stack, Text, useRadioGroup } from "@chakra-ui/react";
 import { useController, useFormContext } from "react-hook-form";
