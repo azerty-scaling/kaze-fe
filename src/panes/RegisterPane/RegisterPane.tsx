@@ -13,7 +13,7 @@ const NotSafe: FC = () => {
 const RegisterFlow: FC = () => {
   return (
     <Box>
-      <Text>Thanks for choosing Keza</Text>
+      <Text>Thanks for choosing NextPay</Text>
       <RegistrationStepper variant={"simple"} />
     </Box>
   );
@@ -28,7 +28,7 @@ const RegisterPane: FC = () => {
       border={colorMode === "light" ? "none" : "1px solid rgba(152, 161, 192, 0.24)"}
     >
       <Heading as="h2" fontSize={"2rem"} mb={10} className="text-shadow">
-        Keza Register
+        NextPay Register
       </Heading>
 
       <Box px={12}></Box>

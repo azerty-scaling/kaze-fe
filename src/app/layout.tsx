@@ -10,8 +10,8 @@ import { Providers } from "./providers";
 const open_sans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Keza",
-  applicationName: "Keza",
+  title: "NextPay",
+  applicationName: "NextPay",
   description: "Buy now pay later",
   authors: {
     name: "Azerty Scaling",

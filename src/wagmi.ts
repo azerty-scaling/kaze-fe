@@ -59,7 +59,7 @@ const connectors = connectorsForWallets(
       ],
     },
   ],
-  { appName: "keza", projectId: walletConnectProjectId },
+  { appName: "nextpay", projectId: walletConnectProjectId },
 );
 
 // Fix missing icons

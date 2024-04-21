@@ -53,7 +53,7 @@ const AdminPane: FC = () => {
       border={colorMode === "light" ? "none" : "1px solid rgba(152, 161, 192, 0.24)"}
     >
       <Heading as="h2" fontSize={"2rem"} mb={10} className="text-shadow">
-        Keza Admin
+        NextPay Admin
       </Heading>
 
       <Box px={12}></Box>
