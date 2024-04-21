@@ -58,6 +58,16 @@ const Header: FC = () => {
               Earn
             </Button>
           )}
+          {!isTablet && (
+            <Button
+              fontSize={"1rem"}
+              colorScheme={"teal"}
+              variant={"ghost"}
+              onClick={() => window.open("/demo", "_self")}
+            >
+              Payment Demo
+            </Button>
+          )}
         </HStack>
       </HStack>
 
